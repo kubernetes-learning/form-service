@@ -26,7 +26,7 @@ class FormController(@Autowired private val formService: FormService) {
 
     @PostMapping("/{formId}/records")
     fun fillForm(@PathVariable("formId") formId: Int, @RequestBody request: RecordRequest): RecordInfo? {
-        return formService.createRecord(formId, request.toRecord())
+        return formService.createRecord(request.toRecord(formId))
     }
 
     @GetMapping("/{formId}/records")

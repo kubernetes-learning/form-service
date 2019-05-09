@@ -3,7 +3,7 @@ CREATE TABLE form (
     name VARCHAR(45),
     description VARCHAR(255),
     owner_user_id INT
-);
+) DEFAULT CHARSET=utf8;
 
 
 CREATE TABLE form_field (
@@ -12,7 +12,7 @@ CREATE TABLE form_field (
     name VARCHAR(45),
     description VARCHAR(255),
     type VARCHAR(30)
-);
+) DEFAULT CHARSET=utf8;
 
 
 INSERT INTO form (id, name, description, owner_user_id) VALUES

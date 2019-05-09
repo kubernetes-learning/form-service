@@ -30,14 +30,6 @@ data class Form (
         val fields: List<Field>? = null
 )
 
-fun Form.toFormInfo() = FormInfo(
-        id = id,
-        name = name,
-        description = description,
-        ownerUserId = ownerUserId,
-        fields = fields?.map { field -> field.toFieldInfo() }
-)
-
 @Entity
 @Table(name = "form_field")
 data class Field (
@@ -58,6 +50,14 @@ data class Field (
         @Column(name = "type")
         @Enumerated(EnumType.STRING)
         val type: FieldType
+)
+
+fun Form.toFormInfo() = FormInfo(
+        id = id,
+        name = name,
+        description = description,
+        ownerUserId = ownerUserId,
+        fields = fields?.map { it.toFieldInfo() }
 )
 
 fun Field.toFieldInfo() = FieldInfo(

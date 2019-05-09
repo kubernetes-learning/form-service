@@ -11,17 +11,17 @@ data class FormRequest(
         val fields: List<FieldRequest>? = null
 )
 
-fun FormRequest.toForm() = Form(
-        name = name,
-        ownerUserId = ownerUserId,
-        description = description,
-        fields = fields?.map { field -> field.toField() }
-)
-
 data class FieldRequest(
         val name: String,
         val description: String,
         val type: FieldType
+)
+
+fun FormRequest.toForm() = Form(
+        name = name,
+        ownerUserId = ownerUserId,
+        description = description,
+        fields = fields?.map { it.toField() }
 )
 
 fun FieldRequest.toField() = Field(
