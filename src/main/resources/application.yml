@@ -1,0 +1,30 @@
+server:
+  port: 8080
+
+management:
+  endpoint:
+    health:
+      enabled: true
+
+spring:
+  application:
+    name: form-management
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: "jdbc:mysql://47.105.145.228:3306/honglai_form?autoreconnect=true&useSSL=false"
+    password: "Ehome100%"
+    username: "root"
+    tomcat:
+      test-on-borrow: true
+      test-while-idle: true
+      time-between-eviction-runs-millis: 60000
+      min-evictable-idle-time-millis: 30000
+      validation-query: SELECT 1
+      max-active: 15
+      max-idle: 10
+      max-wait: 8000
+    sql-script-encoding: UTF-8
+  flyway:
+    url: "jdbc:mysql://47.105.145.228:3306/honglai_form?useSSL=false"
+    user: "root"
+    password: "Ehome100%"
