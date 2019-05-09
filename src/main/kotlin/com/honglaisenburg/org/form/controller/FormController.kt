@@ -29,14 +29,14 @@ class FormController(@Autowired private val formService: FormService) {
         return formService.createRecord(formId, request.toRecord())
     }
 
-    @GetMapping("/{formId}/records/{recordId}")
-    fun getOneRecord(@PathVariable("formId") formId: Int, @PathVariable("recordId") recordId: Int): Optional<RecordInfo> {
-        return formService.getRecordsById(recordId)
+    @GetMapping("/{formId}/records")
+    fun getFormRecords(@PathVariable("formId") formId: Int): List<RecordInfo> {
+        return formService.getRecordsByFormId(formId)
     }
 
-    @GetMapping("/records")
-    fun getFormRecords(@PathVariable("id") formId: Int): List<RecordInfo> {
-        return formService.getRecordsByFormId(formId)
+    @GetMapping("/records/{recordId}")
+    fun getOneRecord(@PathVariable("recordId") recordId: Int): Optional<RecordInfo> {
+        return formService.getRecordsById(recordId)
     }
 
 }
