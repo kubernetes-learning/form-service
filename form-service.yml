@@ -1,0 +1,39 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: form-management-service
+  labels:
+    app: form-management-service
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 1
+  selector:
+    matchLabels:
+      app: form-management-service
+  template:
+    metadata:
+      labels:
+        app: form-management-service
+    spec:
+      containers:
+      - name: form-management-service
+        image: zhanhonglai/form-management-service
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: form-management-service
+  labels:
+    app: form-management-service
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: form-management-service
